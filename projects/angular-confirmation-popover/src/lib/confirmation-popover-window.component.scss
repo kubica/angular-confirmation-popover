@@ -1,9 +1,24 @@
 .popover {
   display: block;
 }
+.arrow {
+  position: absolute;
+}
+.bs-popover-auto.bs-popover-top {
+  top: -8px !important;
+}
+.bs-popover-auto.bs-popover-right {
+  right: -8px !important;
+}
+.bs-popover-auto.bs-popover-bottom {
+  bottom: -8px !important;
+}
+.bs-popover-auto.bs-popover-left {
+  left: -8px !important;
+}
 .bs-popover-top .arrow,
 .bs-popover-bottom .arrow {
-  left: 50%;
+  left: calc(50% - 8px);
 }
 .bs-popover-left .arrow,
 .bs-popover-right .arrow {
