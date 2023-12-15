@@ -1,8 +1,8 @@
 # Angular confirmation popover
 
 [![Sponsorship](https://img.shields.io/badge/funding-github-%23EA4AAA)](https://github.com/users/mattlewis92/sponsorship)
-[![Build Status](https://travis-ci.org/mattlewis92/angular-confirmation-popover.svg?branch=master)](https://travis-ci.org/mattlewis92/angular-confirmation-popover)
-[![codecov](https://codecov.io/gh/mattlewis92/angular-confirmation-popover/branch/master/graph/badge.svg)](https://codecov.io/gh/mattlewis92/angular-confirmation-popover)
+[![CI](https://github.com/mattlewis92/angular-confirmation-popover/actions/workflows/ci.yml/badge.svg)](https://github.com/mattlewis92/angular-confirmation-popover/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/mattlewis92/angular-confirmation-popover/branch/main/graph/badge.svg)](https://codecov.io/gh/mattlewis92/angular-confirmation-popover)
 [![npm version](https://badge.fury.io/js/angular-confirmation-popover.svg)](http://badge.fury.io/js/angular-confirmation-popover)
 [![Twitter Follow](https://img.shields.io/twitter/follow/mattlewis92_.svg)](https://twitter.com/mattlewis92_)
 
@@ -20,7 +20,7 @@ https://mattlewis92.github.io/angular-confirmation-popover/
 
 ## About
 
-A simple angular 10.0+ directive to display a bootstrap styled confirmation popover when an element is clicked.
+A simple angular 15.0+ directive to display a bootstrap styled confirmation popover when an element is clicked.
 
 [AngularJS 1.x version](https://github.com/mattlewis92/angular-bootstrap-confirm)
 
@@ -57,19 +57,7 @@ class MyModule {}
 ```typescript
 @Component({
   selector: 'my-component',
-  template: `
-    <button
-      class="btn btn-outline-secondary"
-      mwlConfirmationPopover
-      [popoverTitle]="popoverTitle"
-      [popoverMessage]="popoverMessage"
-      placement="left"
-      (confirm)="confirmClicked = true"
-      (cancel)="cancelClicked = true"
-    >
-      Click me!
-    </button>
-  `,
+  template: ` <button class="btn btn-outline-secondary" mwlConfirmationPopover [popoverTitle]="popoverTitle" [popoverMessage]="popoverMessage" placement="left" (confirm)="confirmClicked = true" (cancel)="cancelClicked = true">Click me!</button> `,
 })
 class MyComponent {
   popoverTitle = 'Popover title';
@@ -79,7 +67,7 @@ class MyComponent {
 }
 ```
 
-You may also find it useful to view the [demo source](https://github.com/mattlewis92/angular-confirmation-popover/blob/master/projects/demo/app).
+You may also find it useful to view the [demo source](https://github.com/mattlewis92/angular-confirmation-popover/blob/main/projects/demo/app).
 
 ## Documentation
 
@@ -92,21 +80,22 @@ The main `mwlConfirmationPopover` directive options can be viewed [here](https:/
 
 ### Prepare your environment
 
-- Install [Node.js](http://nodejs.org/) and NPM (should come with)
-- Install local dev dependencies: `npm install` while current directory is this repo
+- Install [Node.js](http://nodejs.org/)
+- Install pnpm: `corepack enable`
+- Install local dev dependencies: `pnpm install` while current directory is this repo
 
 ### Development server
 
-Run `npm start` to start a development server on port 8000 with auto reload + tests.
+Run `pnpm start` to start a development server on port 8000 with auto reload + tests.
 
 ### Testing
 
-Run `npm test` to run tests once or `npm run test:watch` to continually run tests.
+Run `pnpm test` to run tests once or `pnpm test:watch` to continually run tests.
 
 ### Release
 
 ```bash
-npm run release
+pnpm release
 ```
 
 ## License

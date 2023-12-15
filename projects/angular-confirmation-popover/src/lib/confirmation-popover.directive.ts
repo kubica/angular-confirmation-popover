@@ -11,10 +11,8 @@ import {
   OnChanges,
   OnInit,
   Injector,
-  ComponentFactoryResolver,
   Renderer2,
   TemplateRef,
-  ComponentFactory,
   SimpleChanges,
 } from '@angular/core';
 import { ConfirmationPopoverWindowComponent } from './confirmation-popover-window.component';
@@ -49,7 +47,8 @@ export interface ConfirmCancelEvent {
   selector: '[mwlConfirmationPopover]',
 })
 export class ConfirmationPopoverDirective
-  implements OnDestroy, OnChanges, OnInit {
+  implements OnDestroy, OnChanges, OnInit
+{
   /**
    * The title of the popover
    */
@@ -166,7 +165,7 @@ export class ConfirmationPopoverDirective
   /**
    * @internal
    */
-  popover: ComponentRef<ConfirmationPopoverWindowComponent>;
+  popover?: ComponentRef<ConfirmationPopoverWindowComponent>;
 
   private eventListeners: (() => void)[] = [];
 
@@ -177,7 +176,6 @@ export class ConfirmationPopoverDirective
     private viewContainerRef: ViewContainerRef,
     private elm: ElementRef,
     private defaultOptions: ConfirmationPopoverOptions,
-    private cfr: ComponentFactoryResolver,
     private renderer: Renderer2
   ) {}
 
@@ -304,10 +302,6 @@ export class ConfirmationPopoverDirective
           (options as any)[param] = this[param];
         }
       });
-
-      const componentFactory: ComponentFactory<ConfirmationPopoverWindowComponent> = this.cfr.resolveComponentFactory(
-        ConfirmationPopoverWindowComponent
-      );
       const childInjector = Injector.create({
         providers: [
           {
@@ -317,9 +311,8 @@ export class ConfirmationPopoverDirective
         ],
       });
       this.popover = this.viewContainerRef.createComponent(
-        componentFactory,
-        this.viewContainerRef.length,
-        childInjector
+        ConfirmationPopoverWindowComponent,
+        { injector: childInjector }
       );
       if (options.appendToBody) {
         document.body.appendChild(this.popover.location.nativeElement);

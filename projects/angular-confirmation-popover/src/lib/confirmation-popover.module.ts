@@ -28,7 +28,6 @@ export function optionsFactory(
   ],
   imports: [CommonModule],
   exports: [ConfirmationPopoverDirective, FocusDirective],
-  entryComponents: [ConfirmationPopoverWindowComponent],
 })
 export class ConfirmationPopoverModule {
   static forRoot(
